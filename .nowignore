@@ -1,0 +1,15 @@
+node_modules
+.next
+.docz
+dist
+build
+/docs
+
+# comments out the below item for pickbazar admin deployment
+packages/shop
+
+# comments out the below item for pickbazar shop deployment
+packages/admin
+
+# comments out the below item for pickbazar api deployment
+# packages/api

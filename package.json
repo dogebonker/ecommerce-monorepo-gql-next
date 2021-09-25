@@ -1,0 +1,40 @@
+{
+  "name": "pickbazar",
+  "version": "1.0.0",
+  "private": true,
+  "author": "RedQ, Inc.",
+  "devDependencies": {
+    "cross-env": "^7.0.0",
+    "husky": "^4.2.3",
+    "lerna": "^3.20.2",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "clean:build": "lerna exec -- rimraf \"{.next,dist,build,.docz}\"",
+    "dev:shop": "lerna run --parallel shop-dev",
+    "build:shop": "yarn workspace @pickbazar/shop build",
+    "serve:shop": "lerna run --parallel start",
+    "dev:admin": "lerna run --parallel admin-dev",
+    "build:admin": "yarn workspace @pickbazar/admin build",
+    "serve:admin": "lerna run --parallel serve",
+    "dev:api-shop": "yarn workspace @pickbazar/api shop-dev",
+    "dev:api-admin": "yarn workspace @pickbazar/api admin-dev"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,css}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  }
+}
